@@ -248,7 +248,7 @@
   }*/
   var user_id = localStorage.getItem("user_id");
 
-  fetch('https://cms-web-portal-ux-api.us-e1.cloudhub.io/api/users/' + user_id)
+  fetch('https://cms-web-portal-experience-api.us-e1.cloudhub.io/api/users/' + user_id)
   .then( 
     response => { 
       response.json().then(
@@ -273,7 +273,7 @@
 
     e.preventDefault();
 
-    var url = 'https://cms-web-portal-ux-api.us-e1.cloudhub.io/api/users/' + user_id;
+    var url = 'https://cms-web-portal-experience-api.us-e1.cloudhub.io/api/users/' + user_id;
 
     var user = {
       user_first_name: $("#name").val(),

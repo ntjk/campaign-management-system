@@ -207,7 +207,7 @@
   }
 
   function getUsers () {
-    fetch('https://cms-web-portal-ux-api.us-e1.cloudhub.io/api/users').then( 
+    fetch('https://cms-web-portal-experience-api.us-e1.cloudhub.io/api/users').then( 
       response => { 
         response.json().then(
           data => {
@@ -246,7 +246,7 @@
   function deleteCampaign2() {
     console.log($("#deleteVariable1").val());
     // console.log(document.getElementById("deleteVariable1").value);
-    return fetch('https://cms-web-portal-ux-api.us-e1.cloudhub.io/api/users/' + $("#deleteVariable1").val(), {
+    return fetch('https://cms-web-portal-experience-api.us-e1.cloudhub.io/api/users/' + $("#deleteVariable1").val(), {
       method: 'delete'
       })
       .then(res => {

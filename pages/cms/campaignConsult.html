@@ -267,7 +267,7 @@
     var id_campaign = localStorage.getItem("id_campaign");
     // console.log('id_campaign: ', id_campaign)
 
-    fetch('https://cms-web-portal-ux-api.us-e1.cloudhub.io/api/campaigns/' + id_campaign)
+    fetch('https://cms-web-portal-experience-api.us-e1.cloudhub.io/api/campaigns/' + id_campaign)
     .then( 
       response => { 
         response.json().then(
