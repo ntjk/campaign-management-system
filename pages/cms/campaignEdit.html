@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NEWTOMS LLC</title>
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- daterange picker -->
+  <link rel="stylesheet" href="../../plugins/daterangepicker/daterangepicker.css">
+  <!-- Tempusdominus Bbootstrap 4 -->
+  <link rel="stylesheet" href="../../plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="../../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light" style="background-image: url(../../dist/img/foto9.jpg); font-family: 'Gadugi'; font-weight: 400; color: white;">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item">
+        <h4 style="margin-top: 3%;" >Editar Campaña</h4>
+      </li>
+    </ul>
+
+      <!-- Right navbar links -->
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="./pages/cms/loginCMS.html">
+            <i class="fas fa-sign-out-alt" style="font-size: 25px;"></i>
+          </a>
+        </li>
+      </ul>
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-light-primary elevation-4" style="background-image: url('../../dist/img/foto1.jpg');">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <img src="../../dist/img/newtoms.png" alt="" style="width: 80%; height: 22%; margin-left: 10%; margin-bottom: -15%;">
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex"></div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2" >
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false" >
+          <li class="nav-item">
+            <a href="../../index.html" class="nav-link">
+              <i class="nav-icon fas fa-home"></i>
+              <p>Inicio</p>
+            </a>
+          </li>
+          <li class="nav-item" id="userBar">
+            <a href="./users.html" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>Usuarios</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="·" class="nav-link" style="background-color: lightgrey; color: black;">
+              <i class="nav-icon fas fa-bullhorn"></i>
+              <p>Campañas<i class="right fas fa-angle-left"></i></p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="campaign.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Campañas</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="campaignCreate.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Crear campaña</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="campaignHistory.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Historial de ejecuciones</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="churn.html" class="nav-link">
+              <i class="nav-icon fas fa-users-slash"></i>
+              <p>Churn</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="churn.html" class="nav-link">
+              <i class="nav-icon fas fa-chart-line"></i>
+              <p>Search Analytics</p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper" style="font-size: 16px; padding: 0px 15px; padding-right: 20px;">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-8 mx-auto">
+            <!-- Campaign EXAMPLE -->
+            <div class="card card-info">
+              <div class="card-header" style="background-image: url(../../dist/img/foto4.jpg); color: white;">
+                <h3 class="card-title" style="margin-top: 5px; font-size: 18.5px;">Datos de la Campaña</h3>
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                </div>
+              </div>
+              <!-- form start -->
+              <div class="card-body">
+                <form id="quickForm1">
+                    <!-- Nombre Campaña -->
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Nombre</label>
+                      <div class="col-sm-9">
+                        <div class="input-group" data-target-input="nearest">
+                            <input type="text" name="name" id="name" class="form-control" placeholder="Nombre" maxlength="55" required/>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Descripción Campaña -->
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Descripción</label>
+                      <div class="col-sm-9">
+                        <div class="input-group" data-target-input="nearest">
+                          <textarea name="description" id="description" class="form-control" rows="2" placeholder="Descripción" maxlength="215" required></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Email Template -->
+                    <div class="form-group row">
+                      <label for="inputEmail3" class="col-sm-3 col-form-label">Plantilla del correo</label>
+                      <div class="col-sm-9">
+                        <select class="form-control" name="template" id="template" required>
+                          <!--<option value="" disabled selected>Seleccionar Plantilla</option>
+                          <option value="Plantilla 1">Plantilla 1</option>
+                          <option value="2">Plantilla 2</option>
+                          <option value="3">Plantilla 3</option>-->
+                        </select>
+                      </div>
+                    </div>
+                    <div class="card-footer pb-1 mt-4 pr-0 pl-0" style="background-color: white;">
+                      <button class="btn btn-success float-right" onclick="editCampaign()">Guardar</button>
+                      <a href="./campaign.html" class="btn btn-default">Cancelar</a>
+                    </div>
+                  </form>
+                </div>
+            </div>
+
+            <!-- Scheduler EXAMPLE -->
+            <div class="card card-info">
+              <div class="card-header">
+                <h3 class="card-title" style="margin-top: 5px; font-size: 18.5px;">Horario de ejecución</h3>
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <form id="quickForm2">
+                  <div class="custom-control custom-switch mt-2 mb-3">
+                    <input type="checkbox" size="3" class="customModo custom-control-input" id="customSwitch1">
+                    <label class="custom-control-label" for="customSwitch1" id="lblSwitch">Se repite</label>
+                  </div>
+                  <div class="form-group row" id="divNoRepite" hidden>
+                    <label class="col-sm-2 col-form-label">Fecha</label>
+                    <div class="col-sm-5">
+                      <div class="input-group date">
+                        <input type="datetime-local" step=900 min="2020-10-01T08:00" max="2025-12-31T08:00" name="fecha" class="form-control datetimepicker-input" data-target="#fecha"/>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row" id="divRepite" hidden>
+                    <label class="col-sm-2 col-form-label text-right">Fecha inicio-fin</label>
+                    <div class="col-sm-4">
+                      <div class="input-group">
+                        <input type="text" class="form-control float-right" id="rangoFechas" name="rangoFechas">
+                      </div>
+                    </div>
+                    <label class="col-sm-2 col-form-label text-right">Frequencia</label>
+                    <div class="col-sm-4">
+                      <select class="form-control" name="frequencia" id="frequencia">
+                        <option value="" disabled selected>Seleccionar frequencia</option>
+                        <option value="diaria">Diaria</option>
+                        <option value="semanal">Semanal</option>
+                        <option value="mensual">Mensual</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group row" id="divMensual" hidden>
+                    <label class="col-sm-2 col-form-label text-right">Fecha</label>
+                    <div class="col-sm-4">
+                      <div class="input-group date">
+                        <input type="number" min="1" max="31" class="form-control" placeholder="Ingrese nro entre 1 y 31" id="fechaNro" name="fechaNro"/>
+                      </div>
+                    </div>
+                    <label class="col-sm-2 col-form-label text-right">Hora</label>
+                    <div class=" col-sm-4">
+                      <input class="form-control" type="time" value="08:00" step="900" max="23:00" list="hora" name="horaMensual" required>
+                    </div>
+                  </div>
+                  <div class="form-group row" id="divSemanal" hidden>
+                    <label class="col-sm-2 col-form-label text-right">Día</label>
+                    <div class="col-sm-4">
+                      <select class="form-control" name="dia" id="dia">
+                        <option value="" disabled selected>Seleccionar día</option>
+                        <option value="1">Lunes</option>
+                        <option value="2">Martes</option>
+                        <option value="3">Miércoles</option>
+                        <option value="4">Jueves</option>
+                        <option value="5">Viernes</option>
+                        <option value="6">Sábado</option>
+                        <option value="7">Domingo</option>
+                      </select>
+                    </div>
+                    <label class="col-sm-2 text-right">Hora</label>
+                    <div class=" col-sm-4">
+                      <input class="form-control" type="time" value="08:00" step="900" max="23:00" list="hora" name="horaSemanal" required>
+                    </div>  
+                  </div>
+                  <div class="form-group row" id="divDiario" hidden>
+                    <label class="col-sm-2 text-right">Hora</label>
+                    <div class=" col-sm-4">
+                      <input class="form-control" type="time"  value="08:00" step="900" max="23:00" list="hora" name="horaDiario" required>
+                    </div>  
+                  </div>
+                  <div class="card-footer pb-1 mt-4 pr-0 pl-0" style="background-color: white;">
+                    <a href="./campaign.html" class="btn btn-default">Cancelar</a>
+                    <button type="submit" class="btn btn-success float-right">Guardar</button>
+                  </div>
+                </form>
+                <datalist id="hora">
+                  <option value="07:00"><option value="08:00"><option value="09:00">
+                  <option value="10:00"><option value="11:00"><option value="12:00">
+                  <option value="13:00"><option value="14:00"><option value="15:00">
+                  <option value="16:00"><option value="17:00"><option value="18:00">
+                  <option value="19:00"><option value="20:00"><option value="21:00">
+                  <option value="22:00"><option value="00:00">
+                  <option value="01:00"><option value="02:00"><option value="03:00">
+                  <option value="04:00"><option value="05:00"><option value="06:00">
+                </datalist>
+              </div>
+            </div>
+            
+            <!-- Rules EXAMPLE -->
+            <div class="card card-danger">
+              <div class="card-header">
+                <h3 class="card-title">Reglas de la campaña</h3>
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <form id="quickForm3">
+                  <label>&nbsp&nbsp Condiciones</label>
+                  <div>  
+                    <table class="table" id="dynamic_field">    
+                    </table>
+                  <div class="card-footer pb-1 mt-0 pr-0 pl-0" style="background-color: white;">
+                    <a href="./campaign.html" class="btn btn-default">Cancelar</a>
+                    <button class="btn btn-success float-right">Guardar</button>
+                  </div>
+                </form>
+                <input id="campaignID" hidden>
+                <input id="campaignStatus" hidden>
+                <!-- /.row -->
+              </div>
+              <!-- /.card-body -->
+            </div>
+          </div>
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section><!-- /.content -->
+  </div><!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <strong>
+      Copyright &copy; 2020 
+      All rights reserved.
+      <div class="float-right d-none d-sm-inline-block">
+        <a href="https://www.newtoms.com">NEWTOMS LLC</a>.</strong>
+    </div>
+  </footer>
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="../../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- jquery-validation -->
+<script src="../../plugins/jquery-validation/jquery.validate.min.js"></script>
+<script src="../../plugins/jquery-validation/additional-methods.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../dist/js/demo.js"></script>
+
+<!-- Date & Time -->
+<!-- Select2 -->
+<script src="../../plugins/select2/js/select2.full.min.js"></script>
+<!-- InputMask -->
+<script src="../../plugins/moment/moment.min.js"></script>
+<script src="../../plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+<!-- date-range-picker -->
+<script src="../../plugins/daterangepicker/daterangepicker.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="../../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- SweetAlert2 -->
+<script src="../../plugins/sweetalert2/sweetalert2.min.js"></script>
+<script>
+
+  function notificationFunction(text, iconType) {
+    var Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000
+    });
+
+    $(function() {
+      Toast.fire({
+        icon: iconType,
+        title: '&nbsp' + text
+      })
+    })
+  }
+</script>
+<!-- Page specific script -->
+<script>
+
+  var id_campaign = localStorage.getItem("id_campaign");
+  // var activeSession = JSON.parse(localStorage.getItem("sessionInformation"));
+  // var userBar = document.getElementById("userBar");
+  // if (activeSession.role == 'Admin'){
+  //   userBar.style.display = "block";
+  // } else {
+  //   userBar.style.display = "none";
+  // }
+
+  fetch('https://cms-web-portal-ux-api.us-e1.cloudhub.io/api/campaigns/' + id_campaign)
+  .then( 
+    response => { 
+      response.json().then(
+        data => {
+          console.log(data);
+          // Campañas
+          document.getElementById("name").value = data.campaign_name;
+          document.getElementById("description").value = data.description;
+          var template = data.email_template;
+          var templateOption = '<option value="1" ';
+          if( template == "1") { templateOption+='selected'; } templateOption += '>Plantilla 1</option><option value="2" ';
+          if( template == "2") { templateOption+='selected'; } templateOption += '>Plantilla 2</option><option value="3" ';
+          if( template == "3") { templateOption+='selected'; } templateOption += '>Plantilla 3</option>';
+          document.getElementById("template").innerHTML = templateOption;    
+          document.getElementById("campaignStatus").value = data.status;
+          // Horario
+          var frequency = data.scheduler.frequency;
+          var hour = data.scheduler.hour.substring(11,);
+          if (frequency == "diaria"){
+            $("#customSwitch1").prop('checked', "checked");
+            $("#divRepite").removeAttr('hidden');
+            $("#divDiario").removeAttr('hidden');
+            $("#rangoFechas").val(data.scheduler.dateRange);
+            $("option[value='diaria']").attr("selected", "selected");
+            $("input[name='horaDiario']").val(hour);
+          }else if(frequency == "semanal"){
+            $("#customSwitch1").prop('checked', "checked");
+            $("#divRepite").removeAttr('hidden');
+            $("#divSemanal").removeAttr('hidden');
+            $("#rangoFechas").val(data.scheduler.dateRange);
+            $("option[value='semanal']").attr("selected", "selected");
+            $("option[value='"+ data.scheduler.day_week +"']").attr("selected", "selected");
+            $("input[name='horaSemanal']").val(hour);
+          }else if(frequency == "mensual"){
+            $("#customSwitch1").prop('checked', "checked");
+            $("#divRepite").removeAttr('hidden');
+            $("#divMensual").removeAttr('hidden');
+            $("#rangoFechas").val(data.scheduler.dateRange);
+            //$("#rangoFechas").value = data.scheduler.dateRange;
+            $("option[value='mensual']").attr("selected", "selected");
+            $("input[name='horaMensual']").val(hour); // si estos dos no son con val sino value, hay que anteceder [0] como un array
+            $("input[name='fechaNro']").val(data.scheduler.date);
+          }else{
+            console.log($("#customSwitch1"));
+            $("#customSwitch1").prop('checked', false);
+            $("#divNoRepite").removeAttr('hidden');
+            var date = data.scheduler.dateRange.substring(0,10);
+            var dateAndHour = date.substring(6,10) + '-' + date.substring(0,2) + '-' + date.substring(3,5) + 'T' + hour;
+            console.log($("input[name='fecha']")[0]);
+            $("input[name='fecha']")[0].value= dateAndHour;
+          }
+          // Reglas
+          var fila = "";
+          var rule = {};
+          for (var i = 0; i < data.rules.length; i++) {
+              var rule = data.rules[i]; 
+              fila +=  '<tr id=row' + i +'><td>'
+              fila += '<div class="form-group row"><label class="col-sm-2 col-form-label">Nombre</label><div class="col-sm-10"><input type="text" name="ruleNames[]" required maxlength="50" class="form-control ruleNames_list" style="width:100%;" value="' + rule.rule_name + '"/></div></div>';
+              fila += '<div class="form-group row"><label class="col-sm-2 col-form-label">Descripción</label><div class="col-sm-10"><textarea type="text" name="ruleDescriptions[]" maxlength="200" class="form-control ruleDescriptions_list" style="width:100%;">' + rule.rule_description + '</textarea></div></div>';
+              fila += '<div class="form-group row"><label class="col-sm-2 col-form-label">Tipo</label><div class="col-sm-10"><select class="form-control ruleTypes_list" name="ruleTypes[]" required><option ';
+              if(rule.rule_type == "Menor") { fila+='selected'; } fila += '>Menor</option><option ';
+              if(rule.rule_type == "Mayor") { fila+='selected'; } fila += '>Mayor</option><option ';
+              if(rule.rule_type == "Menor o igual") { fila+='selected'; } fila += '>Menor o igual</option><option ';
+              if(rule.rule_type == "Mayor o igual") { fila+='selected'; } fila += '>Mayor o igual</option><option ';
+              if(rule.rule_type == "Igual") { fila+='selected'; } fila += '>Igual</option></select></div></div>';
+              fila += '<div class="form-group row"><label class="col-sm-2 col-form-label">Campo</label><div class="col-sm-4"><select class="form-control ruleFields_list" name="ruleFields[]" required><option ';
+              if(rule.rule_field == "Balance actual") { fila+='selected'; } fila += '>Balance actual</option><option ';
+              if(rule.rule_field == "SMS") { fila+='selected'; } fila += '>SMS</option><option ';
+              if(rule.rule_field == "Voz") { fila+='selected'; } fila += '>Voz</option><option ';
+              if(rule.rule_field == "Datos") { fila+='selected'; } fila += '>Datos</option></select></div>';
+              fila += '<label class="col-sm-2 col-form-label text-right">Valor</label><div class="col-sm-4"><input type="text" name="ruleValues[]" required maxlength="50" class="form-control ruleValues_list" style="width:100%;" value="' + rule.rule_value + '"/></div></div>'
+              fila += "</td>";
+              if( i == 0 ){
+                fila += '<td style="width:10%;"><button style="padding: 4px 10px; margin-top: 2px;" type="button" name="add" id="add" class="btn bg-gradient-success .btn-sm btn_add" title="Add another rule">&#10010;</button></td></tr>';
+              }else{
+                fila += '<td><button type="button" name="remove" style="padding: 4px 10px; margin-top: 2px;" id="'+i+'" class="btn bg-gradient-danger .btn-sm btn_remove">&#10005</button></td></tr>';
+              }
+            }
+            document.getElementById("dynamic_field").innerHTML = fila;     
+      })}
+  )
+
+$(function () {
+  //$('.customModo').prop('checked', false);
+  //Date range picker
+
+  var today = new Date();
+  var todayDate = (today.getMonth()+1)+'/'+today.getDate()+'/'+today.getFullYear();
+
+  $('#rangoFechas').daterangepicker({
+    showDropdowns: true,
+    minDate: todayDate,
+    maxDate: '12/31/2025'
+  });
+
+  $.validator.setDefaults({
+    submitHandler: function () {
+      alert( "Form successful submitted!" );
+    }
+  });
+
+  $('.customModo').on('change', function(){
+    var ch = $(this), c;
+    $('#divSemanal').attr("hidden", true);
+    $('#divMensual').attr("hidden", true);
+    $('#divDiario').attr("hidden", true);
+    $('#divRangoFechas').attr("hidden", true);
+    $("#frequencia").val(null);
+    if(ch.is(':checked')){
+      $('#divRepite').removeAttr('hidden');
+      $('#divNoRepite').attr("hidden", true);
+    }else{
+      $('#divNoRepite').removeAttr('hidden');
+      $('#divRepite').attr("hidden", true);
+    }
+  });
+
+  $('#frequencia').on('change', function(){
+    if($('#frequencia').val() == 'diaria'){
+      $('#divDiario').removeAttr('hidden');
+      $('#divSemanal').attr("hidden", true);
+      $('#divMensual').attr("hidden", true);
+    }else if ($('#frequencia').val() == 'semanal'){
+      $('#divSemanal').removeAttr('hidden');
+      $('#divDiario').attr("hidden", true);
+      $('#divMensual').attr("hidden", true);
+    }else{
+      $('#divMensual').removeAttr('hidden');
+      $('#divDiario').attr("hidden", true);
+      $('#divSemanal').attr("hidden", true);
+    }
+  });
+
+  //Datemask dd/mm/yyyy
+  $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+  //Datemask2 mm/dd/yyyy
+  $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+
+  //Bootstrap Duallistbox
+  $('.duallistbox').bootstrapDualListbox()
+
+  $("input[data-bootstrap-switch]").each(function(){
+    $(this).bootstrapSwitch('state', $(this).prop('checked'));
+  });
+
+});
+
+var form = document.getElementById('quickForm1');
+form.addEventListener('submit', function(e){
+
+  e.preventDefault();
+
+  var url = 'https://cms-web-portal-ux-api.us-e1.cloudhub.io/api/campaigns' + '/' + id_campaign;
+  console.log(url);
+  var data = {
+    campaign_name: $("#name").val(),
+    description: $("#description").val(),
+    status: $("#campaignStatus").val(),
+    email_template: $("#template").val(),
+    campaign_id: id_campaign
+  };
+
+ fetch(url, {
+    method: 'PUT',
+    body: JSON.stringify(data),
+    headers:{
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(res => {
+    res.json();
+    if (res.status == 200 || res.status == 201) {
+      notificationFunction('Campaña actualizada', 'success');
+    } else {
+      notificationFunction('No se pudo actualizar la campaña', 'error');
+    }
+  })
+  .catch(error => {
+    notificationFunction('No se pudo actualizar la campaña', 'error');
+    console.error('Error:', error);
+  })
+  // .then(response => console.log('Success:', response));
+});
+
+var formScheduler = document.getElementById('quickForm2');
+formScheduler.addEventListener('submit', function(e){
+
+  e.preventDefault();
+
+  console.log($("#rangoFechas").val());
+  var scheduler = {
+    dateRange: $('#rangoFechas').val(),
+    frequency: $('#frequencia').val(),
+    fixed_hour: null,
+    fixed_date: null,
+    day_week: null,
+    fk_campaign: parseInt(id_campaign)
+  };
+  console.log(scheduler);
+  console.log($("input[name='fecha']").val());
+
+  if ($('#frequencia').val() == 'diaria') {
+    scheduler.fixed_hour = $("input[name='horaDiario']").val();
+  } else if ($('#frequencia').val() == 'semanal') {
+    scheduler.fixed_hour = $("input[name='horaSemanal']").val();
+    scheduler.day_week= $("#dia").val();
+  } else if ($('#frequencia').val() == 'mensual') {
+    scheduler.fixed_hour= $("input[name='horaMensual']").val();
+    scheduler.fixed_date= $("#fechaNro").val();
+  } else {
+    var fecha = $("input[name='fecha']").val();
+    var dateFormatted = fecha.substring(5,7) + "/" + fecha.substring(8,10) + "/" + fecha.substring(0,4);
+    scheduler.fixed_hour= $("input[name='fecha']").val().substring(11, );
+    scheduler.dateRange = dateFormatted + " - " + dateFormatted;
+  };
+
+  var url = 'https://cms-web-portal-ux-api.us-e1.cloudhub.io/api/campaigns/' + id_campaign + '/scheduler';
+
+  fetch(url, {
+    method: 'PUT',
+    body: JSON.stringify(scheduler),
+    headers:{
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(res => {
+    res.json();
+    if (res.status == 200 || res.status == 201) {
+      notificationFunction('Horario actualizado', 'success');
+    } else {
+      notificationFunction('No se pudo actualizar el horario', 'error');
+    }
+  })
+  .catch(error => {
+    notificationFunction('No se pudo actualizar el horario', 'error');
+    console.error('Error:', error);
+  })
+  // .then(response => console.log('Success:', response));
+
+  $("#frequencia").val(null);
+  
+});
+
+var formRules = document.getElementById('quickForm3');
+formRules.addEventListener('submit', function(e){
+
+  e.preventDefault();
+
+  var rules = [];
+  var rule = {};
+  var rulesCount = $("input[name='ruleNames[]']").length;
+  var ruleField = null;
+  var ruleType = null;
+  //var field1 = $(".ruleFields_list")[0];
+  //console.log(field1.options[field1.selectedIndex].text);
+
+  for (var i = 0; i < rulesCount; i++) {
+    ruleField = $(".ruleFields_list")[i];
+    ruleType = $(".ruleTypes_list")[i];
+    rule = {
+      "rule_name": $("input[name='ruleNames[]']")[i].value,
+      "rule_description": $("textarea[name='ruleDescriptions[]']")[i].value,
+      "rule_field": ruleField.options[ruleField.selectedIndex].text,
+      "rule_type": ruleType.options[ruleType.selectedIndex].text,
+      "rule_value": $("input[name='ruleValues[]']")[i].value,
+      "fk_campaign": parseInt(id_campaign)
+    };
+    rules.push(rule);
+  }
+  
+  var url = 'https://cms-web-portal-ux-api.us-e1.cloudhub.io/api/campaigns/' + id_campaign + '/rules';
+
+  fetch(url, {
+    method: 'PUT',
+    body: JSON.stringify(rules),
+    headers:{
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(res => {
+    res.json();
+    if (res.status == 200 || res.status == 201) {
+      notificationFunction('Condiciones actualizadas', 'success');
+    } else {
+      notificationFunction('No se pudieron actualizar las condiciones', 'error');
+    }
+  })
+  .catch(error => {
+    notificationFunction('No se pudieron actualizar las condiciones', 'error');
+    console.error('Error:', error);
+  })
+  // .then(response => console.log('Success:', response));
+  
+})
+</script>
+<script>  
+$(document).ready(function(){  
+      var i=1;  
+      //$('#add').click(function(){  
+      $(document).on('click', '.btn_add', function(){  
+           i++;  
+           $('#dynamic_field').append('<tr id="row'+i+'"><td><div class="form-group row"><label class="col-sm-2 col-form-label">Nombre</label><div class="col-sm-10"><input type="text" name="ruleNames[]" required maxlength="50" class="form-control ruleNames_list" style="width:100%;"/></div></div><div class="form-group row"><label class="col-sm-2 col-form-label">Descripción</label><div class="col-sm-10"><textarea type="text" name="ruleDescriptions[]" maxlength="200" class="form-control ruleDescriptions_list" style="width:100%;"></textarea></div></div><div class="form-group row"><label class="col-sm-2 col-form-label">Tipo</label><div class="col-sm-10"><select class="form-control ruleTypes_list" name="ruleTypes[]" required><option value="" disabled selected>Seleccionar tipo</option><option value="<">Menor</option><option value=">">Mayor</option><option value="<=">Menor o igual</option><option value=">=">Mayor o igual</option><option value="=">Igual</option></select></div></div><div class="form-group row"><label class="col-sm-2 col-form-label">Campo</label><div class="col-sm-4"><select class="form-control ruleFields_list" name="ruleFields[]" required><option value="" disabled selected>Seleccionar campo</option><option value="">Balance actual</option><option value="">SMS</option><option value="">Voz</option><option value="">Data</option></select></div><label class="col-sm-2 col-form-label text-right">Valor</label><div class="col-sm-4"><input type="text" name="ruleValues[]" required maxlength="50" class="form-control ruleValues_list" style="width:100%;"/></div></div></td><td><button type="button" name="remove" style="padding: 4px 10px; margin-top: 2px;" id="'+i+'" class="btn bg-gradient-danger .btn-sm btn_remove">&#10005</button></td></tr>');  
+      });  
+      $(document).on('click', '.btn_remove', function(){  
+          var button_id = $(this).attr("id");   
+          $('#row'+button_id+'').remove();  
+      });    
+});  
+</script>
+</body>
+</html>

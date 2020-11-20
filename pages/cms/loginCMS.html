@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NEWTOMS LLC</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="../../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+  <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="../../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+</head>
+<body class="hold-transition login-page" style="background-image: url(../../dist/img/foto122.jpg); font-family: 'Gadugi'; font-weight: 400; color: white;">
+  <h2 class="mb-4" style="font-family: 'Century Gothic'"><b>Campaign Management System</b></h2>
+  <div class="login-box">
+    <div class="card" style="background-color: rgba(255, 255, 255, 0.8); border-radius: 6%";>
+      <div class="card-body login-card-body" style="background-color: rgba(255, 255, 255, 0)">
+        <div class="login-logo">
+          <img src="../../dist/img/newtoms5.png" width="200px">
+        </div>
+        <p class="login-box-msg"><b>Inicio de sesión</b></p>
+
+        <!-- <form id="loginForm" action="../../index.html" method="post"> -->
+        <form id="loginForm">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" id="username" placeholder="Usuario">
+            <div class="input-group-append" >
+              <div class="input-group-text">
+                <span class="fas fa-envelope"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="password" class="form-control" id="password" placeholder="Contraseña">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <button class="btn btn-primary float-right">
+              <!-- <button type="submit" class="btn btn-primary float-right"> -->
+                <!-- <span class="spinner-border spinner-border-sm"></span> -->
+                Ingresar
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="image" style="width: 5px; height: 5px;">
+  </div>
+
+  <!-- jQuery -->
+  <script src="../../plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="../../dist/js/adminlte.min.js"></script>
+  <!-- SweetAlert2 -->
+  <script src="../../plugins/sweetalert2/sweetalert2.min.js"></script>
+  <script>
+    function notificationFunction() {
+      var Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000
+      });
+
+      $(function() {
+        Toast.fire({
+          icon: 'error',
+          title: '&nbsp No pudo iniciar sesión!'
+        })
+      })
+    }
+  </script>
+  
+  <script>
+    localStorage.clear();
+
+    var form = document.getElementById('loginForm');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      
+      var sessionInformationObject = {
+        username : 'guille16',
+        role : 'Administrador',
+        session : 'on'
+      };
+      console.log(sessionInformationObject);
+      var sessionInformation = JSON.stringify(sessionInformationObject);
+      localStorage.setItem("sessionInformation", sessionInformation);
+      window.location.href = "../../index.html";
+
+      // var url = 'http://cms-web-portal-ux-api.us-e1.cloudhub.io/api/campaigns';
+      // var data = {
+      //   user_username: $("#username").val(),
+      //   user_password: $("#password").val(),
+      // };
+      // console.log(data);
+      
+      // fetch(url, {
+      //   method: 'POST',
+      //   body: JSON.stringify(data),
+      //   headers:{'Content-Type': 'application/json'}
+      // })
+      // .then(
+      //   res => {
+      //     res.json();
+      //     console.log(res);
+      //     if (res.status == 200) {
+      //       console.log("Todo bien!");
+      //     } else {
+      //       notificationFunction();     
+      //     }
+      // })
+      // .catch(error => {
+      //   notificationFunction();     
+      //   console.error('Error:', error);
+      // })
+      // .then(response => console.log('Success:', response));
+
+    })
+  </script>
+</body>
+</html>
