@@ -37,7 +37,7 @@
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="./pages/cms/loginCMS.html">
+          <a class="nav-link" href="../../index.html">
             <i class="fas fa-sign-out-alt" style="font-size: 25px;"></i>
           </a>
         </li>
@@ -50,18 +50,20 @@
     <!-- Sidebar -->
     <div class="sidebar">
       <img src="../../dist/img/newtoms.png" alt="" style="width: 80%; height: 22%; margin-left: 10%; margin-bottom: -15%;">
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex"></div>
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <label for="" style="color: grey;">&nbsp; Campaign Management System</label>
+      </div>
 
       <!-- Sidebar Menu -->
       <nav class="mt-2" >
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false" >
           <li class="nav-item">
-            <a href="../../index.html" class="nav-link">
+            <a href="./home.html" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>Inicio</p>
             </a>
           </li>
-          <li class="nav-item" id="userBar">
+          <li class="nav-item" id="userBar" hidden>
             <a href="./users.html" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>Usuarios</p>
@@ -70,7 +72,7 @@
           <li class="nav-item">
             <a href="·" class="nav-link" style="background-color: lightgrey; color: black;">
               <i class="nav-icon fas fa-bullhorn"></i>
-              <p>Campañas<i class="right fas fa-angle-left"></i></p>
+              <p>Campañas<i style="font-size:20px;" class="right fas fa-angle-left"></i></p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
@@ -335,7 +337,6 @@
 <script src="../../plugins/select2/js/select2.full.min.js"></script>
 <!-- InputMask -->
 <script src="../../plugins/moment/moment.min.js"></script>
-<script src="../../plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
 <!-- date-range-picker -->
 <script src="../../plugins/daterangepicker/daterangepicker.js"></script>
 <!-- Tempusdominus Bootstrap 4 -->
@@ -361,23 +362,16 @@
   }
 </script>
 <!-- Page specific script -->
+<script src="../../dist/js/auth-validation.js"></script>
 <script>
 
   var id_campaign = localStorage.getItem("id_campaign");
-  // var activeSession = JSON.parse(localStorage.getItem("sessionInformation"));
-  // var userBar = document.getElementById("userBar");
-  // if (activeSession.role == 'Admin'){
-  //   userBar.style.display = "block";
-  // } else {
-  //   userBar.style.display = "none";
-  // }
-
   fetch('https://cms-web-portal-experience-api.us-e1.cloudhub.io/api/campaigns/' + id_campaign)
   .then( 
     response => { 
       response.json().then(
         data => {
-          console.log(data);
+          // console.log(data);
           // Campañas
           document.getElementById("name").value = data.campaign_name;
           document.getElementById("description").value = data.description;
@@ -416,12 +410,12 @@
             $("input[name='horaMensual']").val(hour); // si estos dos no son con val sino value, hay que anteceder [0] como un array
             $("input[name='fechaNro']").val(data.scheduler.date);
           }else{
-            console.log($("#customSwitch1"));
+            // console.log($("#customSwitch1"));
             $("#customSwitch1").prop('checked', false);
             $("#divNoRepite").removeAttr('hidden');
             var date = data.scheduler.dateRange.substring(0,10);
             var dateAndHour = date.substring(6,10) + '-' + date.substring(0,2) + '-' + date.substring(3,5) + 'T' + hour;
-            console.log($("input[name='fecha']")[0]);
+            // console.log($("input[name='fecha']")[0]);
             $("input[name='fecha']")[0].value= dateAndHour;
           }
           // Reglas
@@ -526,7 +520,7 @@ form.addEventListener('submit', function(e){
   e.preventDefault();
 
   var url = 'https://cms-web-portal-experience-api.us-e1.cloudhub.io/api/campaigns' + '/' + id_campaign;
-  console.log(url);
+  // console.log(url);
   var data = {
     campaign_name: $("#name").val(),
     description: $("#description").val(),
@@ -562,7 +556,7 @@ formScheduler.addEventListener('submit', function(e){
 
   e.preventDefault();
 
-  console.log($("#rangoFechas").val());
+  // console.log($("#rangoFechas").val());
   var scheduler = {
     dateRange: $('#rangoFechas').val(),
     frequency: $('#frequencia').val(),
@@ -571,8 +565,8 @@ formScheduler.addEventListener('submit', function(e){
     day_week: null,
     fk_campaign: parseInt(id_campaign)
   };
-  console.log(scheduler);
-  console.log($("input[name='fecha']").val());
+  // console.log(scheduler);
+  // console.log($("input[name='fecha']").val());
 
   if ($('#frequencia').val() == 'diaria') {
     scheduler.fixed_hour = $("input[name='horaDiario']").val();

@@ -35,7 +35,7 @@
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="./pages/cms/loginCMS.html">
+          <a class="nav-link" href="../../index.html">
             <i class="fas fa-sign-out-alt" style="font-size: 25px;"></i>
           </a>
         </li>
@@ -48,18 +48,20 @@
     <!-- Sidebar -->
     <div class="sidebar">
       <img src="../../dist/img/newtoms.png" alt="" style="width: 80%; height: 22%; margin-left: 10%; margin-bottom: -15%;">
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex"></div>
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <label for="" style="color: grey;">&nbsp; Campaign Management System</label>
+      </div>
 
       <!-- Sidebar Menu -->
       <nav class="mt-2" >
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false" >
           <li class="nav-item">
-            <a href="../../index.html" class="nav-link">
+            <a href="./home.html" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>Inicio</p>
             </a>
           </li>
-          <li class="nav-item" id="userBar">
+          <li class="nav-item" id="userBar" hidden>
             <a href="./users.html" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>Usuarios</p>
@@ -68,7 +70,7 @@
           <li class="nav-item menu-open">
             <a href="·" class="nav-link" style="background-color: lightgrey; color: black;">
               <i class="nav-icon fas fa-bullhorn"></i>
-              <p>Campañas<i class="right fas fa-angle-left"></i></p>
+              <p>Campañas<i style="font-size:20px;" class="right fas fa-angle-left"></i></p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
@@ -197,15 +199,8 @@
 <!-- Datatables CSV Download config -->
 <script src="../../dist/js/csv-button.js"></script>
 <!-- Page specific script -->
+<script src="../../dist/js/auth-validation.js"></script>
 <script>
-
-  // var activeSession = JSON.parse(localStorage.getItem("sessionInformation"));
-  // var userBar = document.getElementById("userBar");
-  // if (activeSession.role == 'Admin'){
-  //   userBar.style.display = "block";
-  // } else {
-  //   userBar.style.display = "none";
-  // }
 
   // var createButton = document.getElementById("createCampaignButton");
   // if (activeSession.role == 'Admin'){
@@ -257,7 +252,7 @@
       response => { 
         response.json().then(
           data => {
-            console.log(data);
+            // console.log(data);
             if (data.length > 0) {
               var fila = "<thead><tr><th>Campaña</th><th>Descripción</th><th>Estatus</th><th>Opciones</th></tr></thead><tbody>";
               data.forEach((celda) =>{
